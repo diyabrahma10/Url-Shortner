@@ -1,0 +1,61 @@
+<%- include("navbar") %>
+
+<section class="max-w-6xl mx-auto px-4 py-8 mt-36">
+
+  <div class="mb-8">
+    <h1 class="text-2xl font-bold text-gray-900">
+      Welcome,User
+    </h1>
+    <p class="text-gray-600 mt-1">
+      Here are your shortened URLs
+    </p>
+  </div>
+
+
+  <% if (urls.length === 0) { %>
+    <div class="bg-white p-6 rounded-lg shadow text-gray-600">
+      You haven’t created any short URLs yet.
+    </div>
+  <% } else { %>
+
+    <div class="grid gap-4">
+
+      <% urls.forEach(url => { %>
+        <div class="bg-white p-4 rounded-lg shadow flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+
+          <!-- Original URL -->
+          <div class="flex-1">
+            <p class="text-sm text-gray-500">Original URL</p>
+            <p class="text-gray-900 break-all">
+              <%= url.originalUrl %>
+            </p>
+          </div>
+
+          <!-- Short URL -->
+          <div class="flex-1">
+            <p class="text-sm text-gray-500">Short URL</p>
+            <a
+              href="/<%= url.shortCode %>"
+              target="_blank"
+              class="text-blue-600 hover:underline break-all"
+            >
+              <%= url.shortCode %>
+            </a>
+          </div>
+
+          <!-- Click count -->
+          <div class="text-sm text-gray-600">
+            <span class="font-medium"><%= url.clicks %></span> clicks
+          </div>
+
+        </div>
+      <% }) %>
+
+    </div>
+
+  <% } %>
+
+</section>
+
+
+<%- include("footer") %>
