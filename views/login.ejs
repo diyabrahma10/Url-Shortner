@@ -9,6 +9,22 @@
 
     <form class="space-y-4">
 
+      <% if (errors && errors.length > 0) { %>
+      <ul class="mb-4 rounded-md border border-red-300 bg-red-100 px-4 py-3 text-red-700">
+        <% errors.forEach(err => { %>
+        <li class="list-disc ml-5 text-sm"><%= err %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+
+      <% if (success  && success.length > 0) { %>
+      <ul class="mb-4 rounded-md border border-green-300 bg-green-100 px-4 py-3 text-green-700">
+        <% success.forEach(msg => { %>
+        <li class="list-disc ml-5 text-sm"><%= msg %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+
       <div>
         <label class="block mb-1 text-sm font-medium text-gray-700">
           Email
