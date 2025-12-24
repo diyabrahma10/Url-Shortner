@@ -1,24 +1,24 @@
 <%- include("navbar") %>
 
-<section class=" mt-44 mb-9 ">
-  <div class="max-w-md mx-auto mt-12 bg-white rounded-lg shadow p-6 pt-90 sm:p-8">
+<section class="mt-44 mb-9">
+  <div
+    class="max-w-md mx-auto mt-12 bg-white rounded-lg shadow p-6 pt-90 sm:p-8"
+  >
+    <h1 class="text-2xl font-bold text-gray-900 mb-6 text-center">Login</h1>
 
-    <h1 class="text-2xl font-bold text-gray-900 mb-6 text-center">
-      Login
-    </h1>
-
-    <form class="space-y-4">
-
+    <form class="space-y-4" method="POST" action="/auth/login">
       <% if (errors && errors.length > 0) { %>
-      <ul class="mb-4 rounded-md border border-red-300 bg-red-100 px-4 py-3 text-red-700">
+      <ul
+        class="mb-4 rounded-md border border-red-300 bg-red-100 px-4 py-3 text-red-700"
+      >
         <% errors.forEach(err => { %>
         <li class="list-disc ml-5 text-sm"><%= err %></li>
         <% }) %>
       </ul>
-      <% } %>
-
-      <% if (success  && success.length > 0) { %>
-      <ul class="mb-4 rounded-md border border-green-300 bg-green-100 px-4 py-3 text-green-700">
+      <% } %> <% if (success && success.length > 0) { %>
+      <ul
+        class="mb-4 rounded-md border border-green-300 bg-green-100 px-4 py-3 text-green-700"
+      >
         <% success.forEach(msg => { %>
         <li class="list-disc ml-5 text-sm"><%= msg %></li>
         <% }) %>
@@ -30,6 +30,7 @@
           Email
         </label>
         <input
+          name="email"
           type="email"
           class="w-full rounded-lg border border-gray-300 p-2.5 text-sm focus:ring-blue-500 focus:border-blue-500"
           placeholder="name@example.com"
@@ -42,6 +43,7 @@
           Password
         </label>
         <input
+          name="password"
           type="password"
           class="w-full rounded-lg border border-gray-300 p-2.5 text-sm focus:ring-blue-500 focus:border-blue-500"
           placeholder="••••••••"
@@ -58,14 +60,12 @@
 
       <p class="text-sm text-gray-600 text-center">
         Do not have an account?
-        <a href="/register" class="text-blue-600 hover:underline">
+        <a href="/auth/register" class="text-blue-600 hover:underline">
           Register
         </a>
       </p>
-
     </form>
   </div>
 </section>
-
 
 <%- include('footer') %>

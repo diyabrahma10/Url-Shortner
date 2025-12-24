@@ -12,7 +12,7 @@
   </div>
 
 
-  <% if (urls.length === 0) { %>
+  <% if (!urls || urls.length === 0) { %>
     <div class="bg-white p-6 rounded-lg shadow text-gray-600">
       You haven’t created any short URLs yet.
     </div>

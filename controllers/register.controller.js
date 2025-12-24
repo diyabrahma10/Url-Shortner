@@ -1,6 +1,7 @@
 import { createUser, getUserByEmail } from "../services/auth.services.js";
 import { registerSchema } from "../validators/auth.validator.js";
 
+
 export const getRegisterController = async (req, res) => {
   res.render("register");
 };
@@ -23,9 +24,7 @@ export const postRegisterController = async (req, res) => {
         const newUser = await createUser(result.data.name, result.data.email, result.data.password);
         console.log(newUser);
         res.locals.success.push("User created Successfully");
-        return res.render('login');
-        
-        
+        return res.render('login');  
     }
   }
   
