@@ -22,6 +22,7 @@ app.use((req, res, next) => {
 app.use('/auth', authLoginRouter);
 app.use('/auth', authRegisterRouter);
 app.use(verifyUser,homeRouter);  // use the middleware before visiting the '/' route 
+app.use('auth', authLoginRouter);
 
 
 app.listen(3000, () => {

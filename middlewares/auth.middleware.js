@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 export const verifyUser = (req, res, next) => {
   const token = req.cookies.access_token;
   if (!token) {
-    console.log("Token is not there ");
     res.locals.user = req.user;
     req.user = null; 
     res.locals.errors.push("Authentication Required!");
