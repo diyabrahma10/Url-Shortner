@@ -3,6 +3,7 @@ import { authLoginRouter} from './routes/authRoutes/login.route.js';
 import { authRegisterRouter } from './routes/authRoutes/register.route.js';
 import cookieParser from 'cookie-parser';
 import { homeRouter } from './routes/home.route.js';
+import { verifyUser } from './middlewares/auth.middleware.js';
 
 const app = express();
 app.use(express.static("public"));
@@ -14,12 +15,14 @@ app.use(cookieParser())
 app.use((req, res, next) => {
     res.locals.errors= [];
     res.locals.success=[];
+    res.locals.user = null;
     next();
 })
 
 app.use('/auth', authLoginRouter);
 app.use('/auth', authRegisterRouter);
-app.use(homeRouter);
+app.use(verifyUser,homeRouter);  // use the middleware before visiting the '/' route 
+
 
 app.listen(3000, () => {
     console.log(`Server running of http://localhost:${3000}`);

@@ -10,7 +10,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
     "dev": " node --env-file=.env --watch server.js",
-    "dev:notWatch": "node --env-file=.env server.js"
+    "dev:notWatch": "node --env-file=.env server.js",
+    "buildCss" : "npx tailwindcss -i ./public/input.css -o ./public/output.css --watch"
   },
   "keywords": [],
   "author": "",
