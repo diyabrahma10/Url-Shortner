@@ -48,5 +48,5 @@ export const postLoginController = async (req, res) => {
 
 export const logoutUser = (req, res) => {
     res.clearCookie("access_token");
-    return res.redirect('/');
+    return res.redirect('/auth/login');
 }

@@ -1,9 +1,61 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "9fd0cf83-c9c9-49ec-9491-651b4c41138c",
-  "prevId": "f856456e-dbfb-4d59-a21c-9c456dc8368d",
+  "id": "77e29dbb-b481-4b67-8196-345c177d951e",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
+    "urls_table": {
+      "name": "urls_table",
+      "columns": {
+        "shortcode": {
+          "name": "shortcode",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "longurl": {
+          "name": "longurl",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "urls_table_user_id_users_table_id_fk": {
+          "name": "urls_table_user_id_users_table_id_fk",
+          "tableFrom": "urls_table",
+          "tableTo": "users_table",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "urls_table_shortcode_unique": {
+          "name": "urls_table_shortcode_unique",
+          "columns": [
+            "shortcode"
+          ]
+        }
+      },
+      "checkConstraint": {}
+    },
     "users_table": {
       "name": "users_table",
       "columns": {

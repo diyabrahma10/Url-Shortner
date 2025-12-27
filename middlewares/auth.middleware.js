@@ -5,8 +5,7 @@ export const verifyUser = (req, res, next) => {
   if (!token) {
     res.locals.user = req.user;
     req.user = null; 
-    res.locals.errors.push("Authentication Required!");
-    return res.render("login");
+    res.redirect('/auth/login');
     
   }
 
